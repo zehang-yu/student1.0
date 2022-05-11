@@ -1,6 +1,5 @@
 package com.java.roadstudent.roadjava.student1;
 import com.java.roadstudent.roadjava.LoginHandler.LoginHandler;
-import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import javax.swing.*;
 import java.awt.*;
