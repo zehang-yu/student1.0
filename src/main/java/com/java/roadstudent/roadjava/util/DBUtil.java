@@ -2,10 +2,10 @@ package com.java.roadstudent.roadjava.util;
 import java.sql.*;
 
 public class DBUtil {
-    private static final String URL ="jdbc:mysql://localhost:3306/student_gui?useUnicode=true&characterEncoding=utf-8&useSSL=false";
+    private static final String URL ="jdbc:mysql://localhost:3306/student_gui?useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true";
     private static final String DRIVER ="com.mysql.cj.jdbc.Driver";
     private static final String USER_NAME ="root";
-    private static final String PWD ="123456";
+    private static final String PWD ="Yzh1999";
 
     static {
         try {
