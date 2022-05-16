@@ -87,7 +87,7 @@ public class LoginHandler extends KeyAdapter implements ActionListener {
         if(flag)
         {
             //跳转到主界面并销毁登录界面
-            new StudentMainView();
+            new StudentMainView(user);
             loginView.dispose();
         }
         else

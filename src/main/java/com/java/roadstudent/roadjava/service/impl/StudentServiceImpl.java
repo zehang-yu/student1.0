@@ -94,6 +94,57 @@ public class StudentServiceImpl implements StudentService {
         return false;
     }
 
+
+    @Override
+    public StudentDO getByNo(int selectStudentNo) {
+
+        StringBuilder sql = new StringBuilder("select * from student where no = ?");
+        Connection conn=null;
+        PreparedStatement ps =null;
+        ResultSet rs=null;
+        StudentDO studentDO = new StudentDO();
+
+        try {
+            conn=  DBUtil.getConn();
+            ps = conn.prepareStatement(sql.toString());
+            ps.setInt(1,selectStudentNo);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                //处理查出的每一条记录
+                Vector<Object> oneRecord = new Vector<>();
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String no = rs.getString("no");
+                String homeTown = rs.getString("home_town");
+                Double cnScore = rs.getDouble("cn_score");
+                Double enScore = rs.getDouble("en_score");
+                Double mathScore = rs.getDouble("math_score");
+                String pwd = rs.getString("pwd");
+                studentDO.setId(id);
+                studentDO.setName(name);
+                studentDO.setNo(no);
+                studentDO.setHomeTown(homeTown);
+                studentDO.setCnScore(cnScore);
+                studentDO.setEnScore(enScore);
+                studentDO.setMathScore(mathScore);
+                studentDO.setPwd(pwd);
+
+
+
+            }
+
+            return studentDO;
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            DBUtil.closeRs(rs);
+            DBUtil.closePs(ps);
+            DBUtil.closeConn(conn);
+        }
+
+        return null;
+    }
+
     @Override
     public StudentDO getById(int selectStudentId) {
 

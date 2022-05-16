@@ -1,7 +1,10 @@
 package com.java.roadstudent.roadjava.student1;
 
 import com.java.roadstudent.roadjava.LoginHandler.StudentMainViewHandler;
+import com.java.roadstudent.roadjava.entity.StudentDO;
 import com.java.roadstudent.roadjava.res.TableDTO;
+import com.java.roadstudent.roadjava.service.StudentService;
+import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
 import com.java.roadstudent.roadjava.student1.exL.MainViewTableModel;
 import com.java.roadstudent.roadjava.student1.exL.StudentMainViewTable;
 import com.java.roadstudent.roadjava.student1.exL.StudentMainViewTableModel;
@@ -33,19 +36,21 @@ public class StudentMainView extends  JFrame{
 
     StudentMainViewTable studentMainViewTable =new StudentMainViewTable();
 
-    public StudentMainView() {
-        super("学生端-学生成绩管理系统");
+    public StudentMainView(String no) {//传学号进来查询信息！！
+        super("学生端-学生教务管理系统");
 
 
         Container contentPane = getContentPane();
         Rectangle bounds = DimensionUtil.getBounds();
-
-
+        StudentService me = new StudentServiceImpl();
+        StudentDO studentDO= me.getByNo(Integer.parseInt(no));
+        String name = studentDO.getName();
+        String id = studentDO.getId().toString();
         studentMainViewHandler = new StudentMainViewHandler(this);
         //放置北边的组件
         northLayout(contentPane);
         //设置中间的jtable
-        CenterLayout(contentPane);
+        CenterLayout(contentPane,name,id);
 
 
         //自定义图标
@@ -65,7 +70,7 @@ public class StudentMainView extends  JFrame{
 
     }
 
-    private void CenterLayout(Container contentPane) {
+    private void CenterLayout(Container contentPane,String name,String ID) {
         URL imageUrl2 = StudentMainView.class.getClassLoader().getResource("huge.jpg");
         ImageIcon img = new ImageIcon(imageUrl2);// 创建图片对象
         centerlabel.setIcon(img);
@@ -85,8 +90,9 @@ public class StudentMainView extends  JFrame{
 
         Vector<Object> rowVector1 = new Vector<>();
 
-        rowVector1.addElement("张三");
-        rowVector1.addElement("no1");
+
+        rowVector1.addElement(name);
+        rowVector1.addElement(ID);
 
 
 
@@ -121,7 +127,8 @@ public class StudentMainView extends  JFrame{
 
 
     public static void main(String[] args) {
-        new StudentMainView();
+        String no = "1";
+        new StudentMainView(no);
 
     }
 

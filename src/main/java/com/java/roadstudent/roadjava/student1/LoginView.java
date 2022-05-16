@@ -36,7 +36,7 @@ public class LoginView extends  JFrame{
 
 
     public LoginView() {
-        super("学生成绩管理系统");
+        super("学生教务管理系统");
 
         loginHandler= new LoginHandler(this);
         Container contentPane = getContentPane();

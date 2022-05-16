@@ -43,7 +43,7 @@ public class MainView extends  JFrame{
 
 
     public MainView() {
-        super("管理员端-学生成绩管理系统");
+        super("管理员端-学生教务管理系统");
 
 
         Container contentPane = getContentPane();

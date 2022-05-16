@@ -11,11 +11,15 @@ public interface StudentService {
 
     StudentDO getById(int selectStudentId);
 
+    StudentDO getByNo(int selectStudentNo);
+
     boolean update(StudentDO studentDO);
 
     boolean delete(int[] selectStudentIds);
 
     boolean validateStudentLogin(StudentDO studentDO);
+
+
 
 
 
