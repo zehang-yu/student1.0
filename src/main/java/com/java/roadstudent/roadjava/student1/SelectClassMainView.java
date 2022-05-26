@@ -1,16 +1,14 @@
 package com.java.roadstudent.roadjava.student1;
-import com.java.roadstudent.roadjava.LoginHandler.MainViewHandler;
-import com.java.roadstudent.roadjava.LoginHandler.SelectClassViewHandler;
+import com.java.roadstudent.roadjava.Handler.SelectClassViewHandler;
 import com.java.roadstudent.roadjava.req.StudentRequest;
 import com.java.roadstudent.roadjava.res.TableDTO;
 import com.java.roadstudent.roadjava.service.SelectClassService;
 import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.SelectClassServiceImpl;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.exL.MainViewTable;
-import com.java.roadstudent.roadjava.student1.exL.MainViewTableModel;
-import com.java.roadstudent.roadjava.student1.exL.SelectClassTableModel;
-import com.java.roadstudent.roadjava.student1.exL.SelectClassViewTable;
+import com.java.roadstudent.roadjava.student1.view.MainViewTableModel;
+import com.java.roadstudent.roadjava.student1.view.SelectClassTableModel;
+import com.java.roadstudent.roadjava.student1.view.SelectClassViewTable;
 import com.java.roadstudent.roadjava.util.DimensionUtil;
 
 import javax.swing.*;

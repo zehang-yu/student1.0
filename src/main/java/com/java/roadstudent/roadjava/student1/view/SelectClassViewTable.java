@@ -1,4 +1,4 @@
-package com.java.roadstudent.roadjava.student1.exL;
+package com.java.roadstudent.roadjava.student1.view;
 
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
@@ -6,12 +6,15 @@ import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.util.Vector;
 
-public class StudentMainViewTable extends JTable {
-    public StudentMainViewTable(){
+public class SelectClassViewTable extends JTable {
+    public SelectClassViewTable(){
+
+
         //设置表头
+
         JTableHeader tableHeader = getTableHeader();
         tableHeader.setFont(new Font(null,Font.BOLD,16));
-        tableHeader.setForeground(Color.blue);
+        tableHeader.setForeground(Color.RED);
         //表格体
         setFont(new Font(null,Font.PLAIN,14));
         setForeground(Color.BLACK);
@@ -23,10 +26,12 @@ public class StudentMainViewTable extends JTable {
 
 
 
+
+
     public void renderRule(){
         //设置表格列的渲染方式
-        Vector<String> colums = StudentMainViewTableModel.getColums();
-        StudentMainViewTableCellRender render = new StudentMainViewTableCellRender();
+        Vector<String> colums = SelectClassTableModel.getColums();
+        SelectClassViewCellRender render = new SelectClassViewCellRender();
         for(int i=0;i<colums.size();i++ )
         {
             TableColumn column = getColumn(colums.get(i));
@@ -37,6 +42,5 @@ public class StudentMainViewTable extends JTable {
                 column.setResizable(false);
             }
         }
-
     }
 }

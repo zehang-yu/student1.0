@@ -1,5 +1,5 @@
 package com.java.roadstudent.roadjava.student1;
-import com.java.roadstudent.roadjava.LoginHandler.LoginHandler;
+import com.java.roadstudent.roadjava.Handler.LoginHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -112,7 +112,7 @@ public class LoginView extends  JFrame{
         //自定义图标
         URL imageUrl = LoginView.class.getClassLoader().getResource("maotou.jpg");
         setIconImage(new ImageIcon(imageUrl).getImage());
-        setSize(600,400);//单位是像素
+        setSize(500,300);//单位是像素
         //居中显示
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -1,20 +1,14 @@
-package com.java.roadstudent.roadjava.LoginHandler;
+package com.java.roadstudent.roadjava.Handler;
 
-import com.java.roadstudent.roadjava.entity.AdminDO;
-import com.java.roadstudent.roadjava.service.AdminService;
 import com.java.roadstudent.roadjava.service.StudentService;
-import com.java.roadstudent.roadjava.service.impl.AdminServiceImpl;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.LoginView;
 import com.java.roadstudent.roadjava.student1.MainView;
-import com.java.roadstudent.roadjava.student1.exL.AddStudentView;
-import com.java.roadstudent.roadjava.student1.exL.UpdateStudentView;
+import com.java.roadstudent.roadjava.student1.view.AddStudentView;
+import com.java.roadstudent.roadjava.student1.view.UpdateStudentView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class MainViewHandler implements ActionListener {
 

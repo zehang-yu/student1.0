@@ -1,25 +1,17 @@
 package com.java.roadstudent.roadjava.student1;
-import com.java.roadstudent.roadjava.LoginHandler.LoginHandler;
-import com.java.roadstudent.roadjava.LoginHandler.MainViewHandler;
+import com.java.roadstudent.roadjava.Handler.MainViewHandler;
 import com.java.roadstudent.roadjava.req.StudentRequest;
 import com.java.roadstudent.roadjava.res.TableDTO;
 import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.exL.MainViewTable;
-import com.java.roadstudent.roadjava.student1.exL.MainViewTableModel;
+import com.java.roadstudent.roadjava.student1.view.MainViewTable;
+import com.java.roadstudent.roadjava.student1.view.MainViewTableModel;
 import com.java.roadstudent.roadjava.util.DimensionUtil;
-import javafx.scene.control.Tab;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.net.URL;
 import java.util.Vector;
-
-import static java.awt.Font.PLAIN;
 
 public class MainView extends  JFrame{
 

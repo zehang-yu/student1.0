@@ -1,4 +1,4 @@
-package com.java.roadstudent.roadjava.student1.exL;
+package com.java.roadstudent.roadjava.student1.view;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

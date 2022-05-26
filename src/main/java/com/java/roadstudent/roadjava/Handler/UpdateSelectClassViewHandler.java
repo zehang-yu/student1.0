@@ -1,10 +1,10 @@
-package com.java.roadstudent.roadjava.LoginHandler;
+package com.java.roadstudent.roadjava.Handler;
 
 import com.java.roadstudent.roadjava.entity.SelectClassDO;
 import com.java.roadstudent.roadjava.service.SelectClassService;
 import com.java.roadstudent.roadjava.service.impl.SelectClassServiceImpl;
 import com.java.roadstudent.roadjava.student1.MainView;
-import com.java.roadstudent.roadjava.student1.exL.UpdateSelectClassView;
+import com.java.roadstudent.roadjava.student1.view.UpdateSelectClassView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

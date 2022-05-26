@@ -1,4 +1,4 @@
-package com.java.roadstudent.roadjava.LoginHandler;
+package com.java.roadstudent.roadjava.Handler;
 
 import com.java.roadstudent.roadjava.entity.AdminDO;
 import com.java.roadstudent.roadjava.entity.StudentDO;

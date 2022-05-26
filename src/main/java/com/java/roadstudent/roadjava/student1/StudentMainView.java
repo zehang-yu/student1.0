@@ -1,13 +1,11 @@
 package com.java.roadstudent.roadjava.student1;
 
-import com.java.roadstudent.roadjava.LoginHandler.StudentMainViewHandler;
+import com.java.roadstudent.roadjava.Handler.StudentMainViewHandler;
 import com.java.roadstudent.roadjava.entity.StudentDO;
-import com.java.roadstudent.roadjava.res.TableDTO;
 import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.exL.MainViewTableModel;
-import com.java.roadstudent.roadjava.student1.exL.StudentMainViewTable;
-import com.java.roadstudent.roadjava.student1.exL.StudentMainViewTableModel;
+import com.java.roadstudent.roadjava.student1.view.StudentMainViewTable;
+import com.java.roadstudent.roadjava.student1.view.StudentMainViewTableModel;
 import com.java.roadstudent.roadjava.util.DimensionUtil;
 
 import javax.swing.*;
@@ -35,6 +33,7 @@ public class StudentMainView extends  JFrame{
     StudentMainViewHandler studentMainViewHandler;
 
     StudentMainViewTable studentMainViewTable =new StudentMainViewTable();
+    public int id1=111;
 
     public StudentMainView(String no) {//传学号进来查询信息！！
         super("学生端-学生教务管理系统");
@@ -46,11 +45,13 @@ public class StudentMainView extends  JFrame{
         StudentDO studentDO= me.getByNo(Integer.parseInt(no));
         String name = studentDO.getName();
         String id = studentDO.getId().toString();
+        id1=Integer.parseInt(no);
         studentMainViewHandler = new StudentMainViewHandler(this);
         //放置北边的组件
         northLayout(contentPane);
         //设置中间的jtable
         CenterLayout(contentPane,name,id);
+
 
 
         //自定义图标
@@ -128,7 +129,7 @@ public class StudentMainView extends  JFrame{
 
     public static void main(String[] args) {
         String no = "1";
-        new StudentMainView(no);
+        //new StudentMainView(no);
 
     }
 

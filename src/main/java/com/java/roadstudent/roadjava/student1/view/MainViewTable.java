@@ -1,4 +1,4 @@
-package com.java.roadstudent.roadjava.student1.exL;
+package com.java.roadstudent.roadjava.student1.view;
 
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
@@ -6,8 +6,8 @@ import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.util.Vector;
 
-public class SelectClassViewTable extends JTable {
-    public SelectClassViewTable(){
+public class MainViewTable extends JTable {
+    public MainViewTable(){
 
 
         //设置表头
@@ -22,6 +22,7 @@ public class SelectClassViewTable extends JTable {
         setRowHeight(30);
         //设置多行选择
         getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+
     }
 
 
@@ -30,8 +31,8 @@ public class SelectClassViewTable extends JTable {
 
     public void renderRule(){
         //设置表格列的渲染方式
-        Vector<String> colums = SelectClassTableModel.getColums();
-        SelectClassViewCellRender render = new SelectClassViewCellRender();
+        Vector<String> colums = MainViewTableModel.getColums();
+        MainViewCellRender render = new MainViewCellRender();
         for(int i=0;i<colums.size();i++ )
         {
             TableColumn column = getColumn(colums.get(i));

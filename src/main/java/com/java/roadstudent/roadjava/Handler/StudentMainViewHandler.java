@@ -1,8 +1,10 @@
-package com.java.roadstudent.roadjava.LoginHandler;
+package com.java.roadstudent.roadjava.Handler;
 
 
 import com.java.roadstudent.roadjava.student1.SelectClassMainView;
 import com.java.roadstudent.roadjava.student1.StudentMainView;
+import com.java.roadstudent.roadjava.student1.view.MyGradesView;
+import com.java.roadstudent.roadjava.student1.view.MyInfoView;
 
 
 import javax.swing.*;
@@ -22,16 +24,17 @@ public class StudentMainViewHandler implements ActionListener {
         String text = jButton.getText();
         if("我的信息".equals(text))
         {
-
+            int no = studentMainView.id1;
+            new MyInfoView(studentMainView,no);
         }
         else if ("我的成绩".equals(text))
         {
-            //login();
+            int no = studentMainView.id1;
+            new MyGradesView(studentMainView,no);
         }
         else if("课表查询".equals(text)){
 
-            //stulogin();
-            //new StudentRegisterView(loginView);
+
         }
         else if ("选课系统".equals(text))
         {

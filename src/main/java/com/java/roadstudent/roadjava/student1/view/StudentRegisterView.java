@@ -1,11 +1,9 @@
-package com.java.roadstudent.roadjava.student1.exL;
+package com.java.roadstudent.roadjava.student1.view;
 
 
-import com.java.roadstudent.roadjava.LoginHandler.AddStudentViewHandler;
-import com.java.roadstudent.roadjava.LoginHandler.StudentRegisterViewHandler;
+import com.java.roadstudent.roadjava.Handler.StudentRegisterViewHandler;
 import com.java.roadstudent.roadjava.entity.StudentDO;
 import com.java.roadstudent.roadjava.student1.LoginView;
-import com.java.roadstudent.roadjava.student1.MainView;
 
 import javax.swing.*;
 import java.awt.*;

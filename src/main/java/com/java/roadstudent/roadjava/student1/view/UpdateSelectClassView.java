@@ -1,6 +1,6 @@
-package com.java.roadstudent.roadjava.student1.exL;
+package com.java.roadstudent.roadjava.student1.view;
 
-import com.java.roadstudent.roadjava.LoginHandler.UpdateSelectClassViewHandler;
+import com.java.roadstudent.roadjava.Handler.UpdateSelectClassViewHandler;
 import com.java.roadstudent.roadjava.entity.SelectClassDO;
 import com.java.roadstudent.roadjava.service.SelectClassService;
 import com.java.roadstudent.roadjava.service.impl.SelectClassServiceImpl;
