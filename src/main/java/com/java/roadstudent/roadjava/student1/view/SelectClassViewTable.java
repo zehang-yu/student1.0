@@ -37,8 +37,8 @@ public class SelectClassViewTable extends JTable {
             TableColumn column = getColumn(colums.get(i));
             column.setCellRenderer(render);
             if(i==0){
-                column.setPreferredWidth(50);
-                column.setMaxWidth(50);
+                column.setPreferredWidth(100);
+                column.setMaxWidth(100);
                 column.setResizable(false);
             }
         }

@@ -1,6 +1,7 @@
 package com.java.roadstudent.roadjava.Handler;
 
 
+import com.java.roadstudent.roadjava.student1.QueryTimetableMainView;
 import com.java.roadstudent.roadjava.student1.SelectClassMainView;
 import com.java.roadstudent.roadjava.student1.StudentMainView;
 import com.java.roadstudent.roadjava.student1.view.MyGradesView;
@@ -34,7 +35,7 @@ public class StudentMainViewHandler implements ActionListener {
         }
         else if("课表查询".equals(text)){
 
-
+            new QueryTimetableMainView();
         }
         else if ("选课系统".equals(text))
         {

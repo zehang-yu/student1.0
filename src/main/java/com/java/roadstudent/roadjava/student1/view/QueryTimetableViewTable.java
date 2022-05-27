@@ -6,8 +6,8 @@ import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.util.Vector;
 
-public class MainViewTable extends JTable {
-    public MainViewTable(){
+public class QueryTimetableViewTable extends JTable {
+    public QueryTimetableViewTable(){
 
 
         //设置表头
@@ -22,7 +22,6 @@ public class MainViewTable extends JTable {
         setRowHeight(30);
         //设置多行选择
         getSelectionModel().setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-
     }
 
 
@@ -31,8 +30,8 @@ public class MainViewTable extends JTable {
 
     public void renderRule(){
         //设置表格列的渲染方式
-        Vector<String> colums = MainViewTableModel.getColums();
-        MainViewCellRender render = new MainViewCellRender();
+        Vector<String> colums = QueryTimetableTableModel.getColums();
+        QueryTimetableViewCellRender render = new QueryTimetableViewCellRender();
         for(int i=0;i<colums.size();i++ )
         {
             TableColumn column = getColumn(colums.get(i));
