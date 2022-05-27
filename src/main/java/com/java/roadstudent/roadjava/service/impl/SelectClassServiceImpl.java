@@ -22,7 +22,7 @@ public class SelectClassServiceImpl implements SelectClassService {
         if(request.getSearchKey()!=null && !"".equals(request.getSearchKey().trim())){
             sql.append(" where course_id like '%"+request.getSearchKey().trim()+"%' ");
         }
-        sql.append("order by course_id asc limit ").append(request.getStart()).append(",").append(request.getPageSize());
+        sql.append("order by id asc limit ").append(request.getStart()).append(",").append(request.getPageSize());
         Connection conn=null;
         PreparedStatement ps =null;
         ResultSet rs=null;
@@ -84,14 +84,14 @@ public class SelectClassServiceImpl implements SelectClassService {
                 int max_number = rs.getInt("max_number");
                 int picked_number = rs.getInt("picked_number");
                 String dept_name = rs.getString("dept_name");
-                Boolean pick_or_not = rs.getBoolean("pick_or_not");
+                String pick_or_not = rs.getString("pick_or_not");
                 selectClassDO.setId(id);
                 selectClassDO.setCourse_id(course_id);
                 selectClassDO.setTeacher_name(teacher_name);
                 selectClassDO.setMax_number(max_number);
                 selectClassDO.setPicked_number(picked_number);
                 selectClassDO.setDept_name(dept_name);
-                selectClassDO.setPick_or_not(pick_or_not);
+                selectClassDO.setPick_or_not(String.valueOf(pick_or_not));
 
 
 
@@ -123,8 +123,8 @@ public class SelectClassServiceImpl implements SelectClassService {
         try {
             conn=  DBUtil.getConn();
             ps = conn.prepareStatement(sql.toString());
-            ps.setBoolean(1,selectClassDO.getPick_or_not());
-            ps.setInt(8,selectClassDO.getId());
+            ps.setString(1,selectClassDO.getPick_or_not());
+            ps.setInt(2,selectClassDO.getId());
 
             return ps.executeUpdate()==1;
 
@@ -153,7 +153,7 @@ public class SelectClassServiceImpl implements SelectClassService {
             int max_number = rs.getInt("max_number");
             int picked_number = rs.getInt("picked_number");
             String dept_name = rs.getString("dept_name");
-            Boolean pick_or_not = rs.getBoolean("pick_or_not");
+            String pick_or_not = rs.getString("pick_or_not");
             oneRecord.addElement(id);
             oneRecord.addElement(course_id);
             oneRecord.addElement(teacher_name);

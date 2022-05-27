@@ -7,7 +7,7 @@ public class SelectClassDO {
     private int max_number;
     private int picked_number;
     private String dept_name;
-    private Boolean pick_or_not;
+    private String pick_or_not;
 
     public Integer getId() {
         return id;
@@ -56,11 +56,11 @@ public class SelectClassDO {
         this.dept_name = dept_name;
     }
 
-    public Boolean getPick_or_not() {
+    public String getPick_or_not() {
         return pick_or_not;
     }
 
-    public void setPick_or_not(Boolean pick_or_not) {
+    public void setPick_or_not(String pick_or_not) {
         this.pick_or_not = pick_or_not;
     }
 

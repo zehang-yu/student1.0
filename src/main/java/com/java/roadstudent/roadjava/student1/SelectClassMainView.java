@@ -3,10 +3,7 @@ import com.java.roadstudent.roadjava.Handler.SelectClassViewHandler;
 import com.java.roadstudent.roadjava.req.StudentRequest;
 import com.java.roadstudent.roadjava.res.TableDTO;
 import com.java.roadstudent.roadjava.service.SelectClassService;
-import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.SelectClassServiceImpl;
-import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.view.MainViewTableModel;
 import com.java.roadstudent.roadjava.student1.view.SelectClassTableModel;
 import com.java.roadstudent.roadjava.student1.view.SelectClassViewTable;
 import com.java.roadstudent.roadjava.util.DimensionUtil;
@@ -19,6 +16,7 @@ import java.util.Vector;
 public class SelectClassMainView extends  JFrame{
 
     JPanel northPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    JButton updateButton = new JButton("修改");
     JTextField searchTxt=new JTextField(15);
     JButton searchBtn = new JButton("查询");
 
@@ -63,9 +61,10 @@ public class SelectClassMainView extends  JFrame{
         //设置窗体完全充满整个屏幕的可见大小
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(true);
         setVisible(true);
+
 
     }
 
@@ -127,7 +126,9 @@ public class SelectClassMainView extends  JFrame{
     private void northLayout(Container contentPane) {
         //增加事件监听
         searchBtn.addActionListener(selectClassViewHandler);
+        updateButton.addActionListener(selectClassViewHandler);
 
+        northPanel.add(updateButton);
         northPanel.add(searchTxt);
         northPanel.add(searchBtn);
         contentPane.add(northPanel,BorderLayout.NORTH);
@@ -146,20 +147,20 @@ public class SelectClassMainView extends  JFrame{
         return pageNow;
     }
 
-    public void reLoadTable() {
-        StudentService studentService = new StudentServiceImpl();
+    public void reLoadClassTable() {
+        SelectClassService selectClassService = new SelectClassServiceImpl();
         StudentRequest request = new StudentRequest();
         request.setPageNow(pageNow);
         request.setPageSize(pageSize);
         request.setSearchKey(searchTxt.getText().trim());
-        TableDTO tableDTO = studentService.retrieveStudent(request);
+        TableDTO tableDTO = selectClassService.retrieveSelectClass(request);
         Vector<Vector<Object>> data = tableDTO.getData();
-        MainViewTableModel.updateModel(data);
+        SelectClassTableModel.updateClassModel(data);
         selectClassViewTable.renderRule();
         showPreNext(tableDTO.getTotalCount());
 
     }
-    public int[] getSelectStudentIds(){
+    public int[] getSelectClassIds(){
         int[] selectedRows = selectClassViewTable.getSelectedRows();
         int[] ids = new int[selectedRows.length];
         for(int i=0;i<selectedRows.length;i++){

@@ -8,13 +8,13 @@ public class SelectClassTableModel extends DefaultTableModel {
 
     static Vector<String> colums = new Vector<>();
     static {
-        colums.addElement("课程编号");
+        colums.addElement("编号");
         colums.addElement("课程名称");
-        colums.addElement("教师名称");
-        colums.addElement("人数限制");
+        colums.addElement("授课教师");
+        colums.addElement("可选人数");
         colums.addElement("已选人数");
-        colums.addElement("学院限制");
-        colums.addElement("操作");
+        colums.addElement("所属学院");
+        colums.addElement("选课状态");
     }
     private SelectClassTableModel(){
         super(null,colums);
@@ -24,7 +24,10 @@ public class SelectClassTableModel extends DefaultTableModel {
         selectClassTableModel.setDataVector(data,colums);
         return selectClassTableModel;
     }
+    public static void updateClassModel(Vector<Vector<Object>>data){
+        selectClassTableModel.setDataVector(data,colums);
 
+    }
 
 
     public static Vector<String> getColums() {
