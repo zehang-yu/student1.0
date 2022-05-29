@@ -23,7 +23,7 @@ public class MyGradesView extends JDialog {
 
     public MyGradesView(StudentMainView studentmainView, int selectStudentId){
         super(studentmainView,"学生成绩界面",true);
-
+// 192.168.137.1:
         myGradesViewHandler =new MyGradesViewHandler(this,studentmainView);
         //查询selectStudentId对应的记录并回显
         StudentService studentService = new StudentServiceImpl();

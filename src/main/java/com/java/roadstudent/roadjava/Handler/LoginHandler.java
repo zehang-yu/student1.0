@@ -32,7 +32,7 @@ public class LoginHandler extends KeyAdapter implements ActionListener {
             loginView.getUserText().setText("");
             loginView.getPwdField().setText("");
         }
-        else if ("管理员登录".equals(text))
+        else if ("教务员登录".equals(text))
         {
             login();
         }

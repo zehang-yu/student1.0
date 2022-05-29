@@ -13,7 +13,7 @@ public class AddStudentView extends JDialog {
     JTextField nameTxt = new JTextField();
     JLabel noLabel = new JLabel("学号：",JLabel.RIGHT);
     JTextField noTxt = new JTextField();
-    JLabel homeLabel = new JLabel("家乡：",JLabel.RIGHT);
+    JLabel homeLabel = new JLabel("学院：",JLabel.RIGHT);
     JTextField homeTxt = new JTextField();
     JLabel cnLabel = new JLabel("语文成绩：",JLabel.RIGHT);
     JTextField cnTxt = new JTextField();

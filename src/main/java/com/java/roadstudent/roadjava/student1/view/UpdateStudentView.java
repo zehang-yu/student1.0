@@ -11,19 +11,19 @@ import java.awt.*;
 
 public class UpdateStudentView extends JDialog {
     JPanel jPanel=new JPanel(new FlowLayout(FlowLayout.CENTER,10,20));
-    JLabel idLabel = new JLabel("学生编号：");
-    JTextField idTxt =new JTextField();
+//    JLabel idLabel = new JLabel("学生编号：");
+//    JTextField idTxt =new JTextField();
     JLabel nameLabel = new JLabel("姓名：",JLabel.RIGHT);
     JTextField nameTxt = new JTextField();
     JLabel noLabel = new JLabel("学号：",JLabel.RIGHT);
     JTextField noTxt = new JTextField();
-    JLabel homeLabel = new JLabel("家乡：",JLabel.RIGHT);
+    JLabel homeLabel = new JLabel("学院：",JLabel.RIGHT);
     JTextField homeTxt = new JTextField();
-    JLabel cnLabel = new JLabel("语文成绩：",JLabel.RIGHT);
+    JLabel cnLabel = new JLabel("C++成绩：",JLabel.RIGHT);
     JTextField cnTxt = new JTextField();
-    JLabel enLabel = new JLabel("英语成绩：",JLabel.RIGHT);
+    JLabel enLabel = new JLabel("大英成绩：",JLabel.RIGHT);
     JTextField enTxt = new JTextField();
-    JLabel mathLabel = new JLabel("数学成绩：",JLabel.RIGHT);
+    JLabel mathLabel = new JLabel("工数成绩：",JLabel.RIGHT);
     JTextField mathTxt = new JTextField();
     JLabel pwdLabel = new JLabel("密码：",JLabel.RIGHT);
     JTextField pwdTxt = new JTextField();
@@ -39,13 +39,13 @@ public class UpdateStudentView extends JDialog {
         StudentService studentService = new StudentServiceImpl();
         StudentDO selectedStu = studentService.getById(selectStudentId);
 
-        idLabel.setPreferredSize(new Dimension(80,30));
-        jPanel.add(idLabel);
-        idTxt.setPreferredSize(new Dimension(200,30));
-        idTxt.setText(selectedStu.getId()+"");
-        //设置ID不可编辑
-        idTxt.setEnabled(false);
-        jPanel.add(idTxt);
+//        idLabel.setPreferredSize(new Dimension(80,30));
+//        jPanel.add(idLabel);
+//        idTxt.setPreferredSize(new Dimension(200,30));
+//        idTxt.setText(selectedStu.getId()+"");
+//        //设置ID不可编辑
+//        idTxt.setEnabled(false);
+//        jPanel.add(idTxt);
 
 
         nameLabel.setPreferredSize(new Dimension(80,30));
@@ -55,11 +55,11 @@ public class UpdateStudentView extends JDialog {
 
         jPanel.add(nameTxt);
 
-        noLabel.setPreferredSize(new Dimension(80,30));
-        jPanel.add(noLabel);
-        noTxt.setPreferredSize(new Dimension(200,30));
-        noTxt.setText(selectedStu.getNo());
-        jPanel.add(noTxt);
+//        noLabel.setPreferredSize(new Dimension(80,30));
+//        jPanel.add(noLabel);
+//        noTxt.setPreferredSize(new Dimension(200,30));
+//        noTxt.setText(selectedStu.getNo());
+//        jPanel.add(noTxt);
 
         homeLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(homeLabel);
@@ -88,7 +88,7 @@ public class UpdateStudentView extends JDialog {
         pwdLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(pwdLabel);
         pwdTxt.setPreferredSize(new Dimension(200,30));
-        pwdTxt.setText(String.valueOf(selectedStu.getMathScore()));
+        pwdTxt.setText(String.valueOf(selectedStu.getPwd()));
         jPanel.add(pwdTxt);
 
         updateBtn.addActionListener(updateStudentViewHandler);
@@ -110,7 +110,7 @@ public class UpdateStudentView extends JDialog {
     public StudentDO buildUpdatedStudentDO() {
 
         StudentDO studentDO = new StudentDO();
-        studentDO.setId(Integer.valueOf(idTxt.getText()));
+//        studentDO.setId(Integer.valueOf(idTxt.getText()));
         studentDO.setName(nameTxt.getText());
         studentDO.setNo(noTxt.getText());
         studentDO.setHomeTown(homeTxt.getText());

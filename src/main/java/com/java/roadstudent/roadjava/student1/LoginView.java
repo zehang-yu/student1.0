@@ -13,10 +13,6 @@ import static java.awt.Font.PLAIN;
 
 public class LoginView extends  JFrame{
 
-
-
-
-
     JLabel nameLabel = new JLabel("学生管理系统",JLabel.CENTER);
     SpringLayout springLayout = new SpringLayout();
     JPanel centerPane = new JPanel(springLayout);
@@ -24,15 +20,12 @@ public class LoginView extends  JFrame{
     JTextField userText = new JTextField();
     JLabel pwdLabel = new JLabel("密码：");
     JPasswordField pwdField = new JPasswordField();
-    JButton loginBtn = new JButton("管理员登录");
+    JButton loginBtn = new JButton("教务员登录");
     //JButton resetBtn = new JButton("重置");
     JButton stuLoginbtn = new JButton("学生登录");
     TrayIcon trayIcon;
     SystemTray systemTray;
     LoginHandler loginHandler;
-
-
-
 
 
     public LoginView() {
@@ -149,13 +142,8 @@ public class LoginView extends  JFrame{
         springLayout.putConstraint(SpringLayout.NORTH,stuLoginbtn,0,SpringLayout.NORTH,loginBtn);
     }
 
-
     public static void main(String[] args) {
-//        try {
- //           BeautyEyeLNFHelper.launchBeautyEyeLNF();
- //       } catch (Exception var2) {
-   //         System.out.println("加载炫彩皮肤失败！");
-   //     }
+
         new LoginView();
     }
 
