@@ -20,7 +20,7 @@ public class StudentServiceImpl implements StudentService {
         StringBuilder sql = new StringBuilder();
         sql.append("select * from student ");
         if(request.getSearchKey()!=null && !"".equals(request.getSearchKey().trim())){
-            sql.append(" where name like '%"+request.getSearchKey().trim()+"%' ");
+            sql.append(" where name like '%"+request.getSearchKey().trim()+"%' or no like'%"+request.getSearchKey().trim()+"%'");
         }
         sql.append("order by id asc limit ").append(request.getStart()).append(",").append(request.getPageSize());
         Connection conn=null;
@@ -62,7 +62,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean add(StudentDO studentDO) {
         StringBuilder sql = new StringBuilder();
-        sql.append("insert into  student(name,no,home_town,cn_score,en_score,math_score,pwd) ");
+        sql.append("insert into  student(name,no,department,cn_score,en_score,math_score,pwd) ");
         sql.append("values(?,?,?,?,?,?,?) ");
 
         Connection conn=null;
@@ -75,7 +75,7 @@ public class StudentServiceImpl implements StudentService {
             ps = conn.prepareStatement(sql.toString());
             ps.setString(1,studentDO.getName());
             ps.setString(2,studentDO.getNo());
-            ps.setString(3,studentDO.getHomeTown());
+            ps.setString(3,studentDO.getDepartment());
             ps.setDouble(4,studentDO.getCnScore());
             ps.setDouble(5,studentDO.getEnScore());
             ps.setDouble(6,studentDO.getMathScore());
@@ -115,7 +115,7 @@ public class StudentServiceImpl implements StudentService {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String no = rs.getString("no");
-                String homeTown = rs.getString("home_town");
+                String homeTown = rs.getString("department");
                 Double cnScore = rs.getDouble("cn_score");
                 Double enScore = rs.getDouble("en_score");
                 Double mathScore = rs.getDouble("math_score");
@@ -123,7 +123,7 @@ public class StudentServiceImpl implements StudentService {
                 studentDO.setId(id);
                 studentDO.setName(name);
                 studentDO.setNo(no);
-                studentDO.setHomeTown(homeTown);
+                studentDO.setDepartment(homeTown);
                 studentDO.setCnScore(cnScore);
                 studentDO.setEnScore(enScore);
                 studentDO.setMathScore(mathScore);
@@ -165,7 +165,7 @@ public class StudentServiceImpl implements StudentService {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String no = rs.getString("no");
-                String homeTown = rs.getString("home_town");
+                String department = rs.getString("department");
                 Double cnScore = rs.getDouble("cn_score");
                 Double enScore = rs.getDouble("en_score");
                 Double mathScore = rs.getDouble("math_score");
@@ -173,11 +173,12 @@ public class StudentServiceImpl implements StudentService {
                 studentDO.setId(id);
                 studentDO.setName(name);
                 studentDO.setNo(no);
-                studentDO.setHomeTown(homeTown);
+                studentDO.setDepartment(department);
                 studentDO.setCnScore(cnScore);
                 studentDO.setEnScore(enScore);
                 studentDO.setMathScore(mathScore);
                 studentDO.setPwd(pwd);
+
 
 
 
@@ -198,7 +199,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean update(StudentDO studentDO) {
         StringBuilder sql = new StringBuilder();
-        sql.append("update student set name=?,no=?,home_town=?,cn_score=?,en_score=?,math_score=? ,pwd=?");
+        sql.append("update student set name=?,no=?,department=?,cn_score=?,en_score=?,math_score=?,pwd=?");
         sql.append("where id=? ");
 
         Connection conn=null;
@@ -211,7 +212,7 @@ public class StudentServiceImpl implements StudentService {
             ps = conn.prepareStatement(sql.toString());
             ps.setString(1,studentDO.getName());
             ps.setString(2,studentDO.getNo());
-            ps.setString(3,studentDO.getHomeTown());
+            ps.setString(3,studentDO.getDepartment());
             ps.setDouble(4,studentDO.getCnScore());
             ps.setDouble(5,studentDO.getEnScore());
             ps.setDouble(6,studentDO.getMathScore());
@@ -256,7 +257,7 @@ public class StudentServiceImpl implements StudentService {
         try {
             conn=  DBUtil.getConn();
             ps = conn.prepareStatement(sql.toString());
-            for(int i  =0;i<length;i++){
+            for(int i=0;i<length;i++){
                 //设置参数从1开始
                 ps.setInt(i+1,selectStudentIds[i]);
             }
@@ -311,9 +312,6 @@ public class StudentServiceImpl implements StudentService {
 
         }
 
-
-
-
         return false;
 
     }
@@ -326,20 +324,22 @@ public class StudentServiceImpl implements StudentService {
             int id = rs.getInt("id");
             String name = rs.getString("name");
             String no = rs.getString("no");
-            String homeTown = rs.getString("home_town");
+            String department = rs.getString("department");
             double cnScore = rs.getDouble("cn_score");
             double enScore = rs.getDouble("en_score");
             double mathScore = rs.getDouble("math_score");
             double totalScore = cnScore+enScore+mathScore;
             oneRecord.addElement(id);
-            oneRecord.addElement(name);
             oneRecord.addElement(no);
-            oneRecord.addElement(homeTown);
+            oneRecord.addElement(name);
+            oneRecord.addElement(department);
             oneRecord.addElement(cnScore);
             oneRecord.addElement(enScore);
             oneRecord.addElement(mathScore);
             oneRecord.addElement(totalScore);
             data.addElement(oneRecord);
+
+
 
         }
         return data;

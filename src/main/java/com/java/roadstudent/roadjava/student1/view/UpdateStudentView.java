@@ -4,15 +4,15 @@ import com.java.roadstudent.roadjava.Handler.UpdateStudentViewHandler;
 import com.java.roadstudent.roadjava.entity.StudentDO;
 import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.MainView;
+import com.java.roadstudent.roadjava.student1.AdminMainView;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class UpdateStudentView extends JDialog {
     JPanel jPanel=new JPanel(new FlowLayout(FlowLayout.CENTER,10,20));
-//    JLabel idLabel = new JLabel("学生编号：");
-//    JTextField idTxt =new JTextField();
+    JLabel idLabel = new JLabel("学生编号：");
+    JTextField idTxt =new JTextField();
     JLabel nameLabel = new JLabel("姓名：",JLabel.RIGHT);
     JTextField nameTxt = new JTextField();
     JLabel noLabel = new JLabel("学号：",JLabel.RIGHT);
@@ -31,20 +31,20 @@ public class UpdateStudentView extends JDialog {
 
     UpdateStudentViewHandler updateStudentViewHandler;
 
-    public UpdateStudentView(MainView mainView, int selectStudentId){
-        super(mainView,"修改学生",true);
+    public UpdateStudentView(AdminMainView mainView, int selectStudentId){
+        super(mainView,"修改学生信息",true);
 
         updateStudentViewHandler =new UpdateStudentViewHandler(this,mainView);
         //查询selectStudentId对应的记录并回显
         StudentService studentService = new StudentServiceImpl();
         StudentDO selectedStu = studentService.getById(selectStudentId);
 
-//        idLabel.setPreferredSize(new Dimension(80,30));
+        idLabel.setPreferredSize(new Dimension(80,30));
 //        jPanel.add(idLabel);
-//        idTxt.setPreferredSize(new Dimension(200,30));
-//        idTxt.setText(selectedStu.getId()+"");
-//        //设置ID不可编辑
-//        idTxt.setEnabled(false);
+        idTxt.setPreferredSize(new Dimension(200,30));
+        idTxt.setText(selectedStu.getId()+"");
+        //设置ID不可编辑
+        idTxt.setEnabled(false);
 //        jPanel.add(idTxt);
 
 
@@ -52,19 +52,18 @@ public class UpdateStudentView extends JDialog {
         jPanel.add(nameLabel);
         nameTxt.setPreferredSize(new Dimension(200,30));
         nameTxt.setText(selectedStu.getName());
-
         jPanel.add(nameTxt);
 
-//        noLabel.setPreferredSize(new Dimension(80,30));
-//        jPanel.add(noLabel);
-//        noTxt.setPreferredSize(new Dimension(200,30));
-//        noTxt.setText(selectedStu.getNo());
-//        jPanel.add(noTxt);
+        noLabel.setPreferredSize(new Dimension(80,30));
+        jPanel.add(noLabel);
+        noTxt.setPreferredSize(new Dimension(200,30));
+        noTxt.setText(selectedStu.getNo());
+        jPanel.add(noTxt);
 
         homeLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(homeLabel);
         homeTxt.setPreferredSize(new Dimension(200,30));
-        homeTxt.setText(selectedStu.getHomeTown());
+        homeTxt.setText(selectedStu.getDepartment());
         jPanel.add(homeTxt);
 
         cnLabel.setPreferredSize(new Dimension(80,30));
@@ -110,10 +109,10 @@ public class UpdateStudentView extends JDialog {
     public StudentDO buildUpdatedStudentDO() {
 
         StudentDO studentDO = new StudentDO();
-//        studentDO.setId(Integer.valueOf(idTxt.getText()));
+        studentDO.setId(Integer.valueOf(idTxt.getText()));
         studentDO.setName(nameTxt.getText());
         studentDO.setNo(noTxt.getText());
-        studentDO.setHomeTown(homeTxt.getText());
+        studentDO.setDepartment(homeTxt.getText());
         studentDO.setCnScore(Double.valueOf(cnTxt.getText()));
         studentDO.setEnScore(Double.valueOf(enTxt.getText()));
         studentDO.setMathScore(Double.valueOf(mathTxt.getText()));

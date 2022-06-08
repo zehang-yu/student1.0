@@ -13,7 +13,7 @@ import java.awt.*;
 import java.net.URL;
 import java.util.Vector;
 
-public class QueryTimetableMainView extends  JFrame{
+public class QueryTimetableView extends  JFrame{
 
     JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
     JButton preBtn = new JButton("上一页");
@@ -21,14 +21,14 @@ public class QueryTimetableMainView extends  JFrame{
 
     QueryTimetableViewTable queryTimetableViewTable = new QueryTimetableViewTable();
     private int pageNow = 1;//当前是第几页，默认是第一页
-    private int pageSize = 10;//一页显示多少条数据库记录
+    private int pageSize;//一页显示多少条数据库记录
 
     QueryTimetableViewHandler queryTimetableViewHandler;
 
 
 
-    public QueryTimetableMainView() {
-        super("课表查询-学生成绩管理系统");
+    public QueryTimetableView() {
+        super("学生教务管理系统-已选查询");
 
 
         Container contentPane = getContentPane();
@@ -38,14 +38,14 @@ public class QueryTimetableMainView extends  JFrame{
 
 
         queryTimetableViewHandler = new QueryTimetableViewHandler(this);
-        //设置中间的jtable
+        //设置中间的JTable
         CenterLayout(contentPane);
         //放置南边的组件
         southLayout(contentPane);
 
 
         //自定义图标
-        URL imageUrl = QueryTimetableMainView.class.getClassLoader().getResource("maotou.jpg");
+        URL imageUrl = QueryTimetableView.class.getClassLoader().getResource("logo.png");
         setIconImage(new ImageIcon(imageUrl).getImage());
         //根据屏幕大小设置主界面
 
@@ -66,7 +66,7 @@ public class QueryTimetableMainView extends  JFrame{
 
         //data+totalCount
         QueryTimetableTableModel queryTimetableTableModel = QueryTimetableTableModel.assembleModel(dto.getData());
-        //吧jtable和model关联
+        //吧JTable和model关联
         queryTimetableViewTable.setModel(queryTimetableTableModel);
         queryTimetableViewTable.renderRule();
 
@@ -82,7 +82,7 @@ public class QueryTimetableMainView extends  JFrame{
         request.setPageNow(pageNow);
         request.setPageSize(pageSize);
         TableDTO tableDTO = queryTimetableService.retrieveQueryTimetable(request);
-        Vector<Vector<Object>> data = tableDTO.getData();
+//        Vector<Vector<Object>> data = tableDTO.getData();
         return tableDTO;
     }
 
@@ -101,11 +101,11 @@ public class QueryTimetableMainView extends  JFrame{
         }else {
             preBtn.setVisible(true);
         }
-        int pageCount = 0;//总共有几页
+        int pageCount;//总共有几页
         if(totalCount%pageSize==0){
-            pageCount=totalCount/pageSize;
+            pageCount = totalCount/pageSize;
         }else{
-            pageCount=totalCount/pageSize+1;
+            pageCount = totalCount/pageSize+1;
         }
         if(pageNow==pageCount){
             nextBtn.setVisible(false);
@@ -116,10 +116,8 @@ public class QueryTimetableMainView extends  JFrame{
     }
 
 
-
-
     public static void main(String[] args) {
-        new QueryTimetableMainView();
+        new QueryTimetableView();
 
     }
     public void setPageNow(int pageNow){
@@ -137,13 +135,10 @@ public class QueryTimetableMainView extends  JFrame{
         request.setPageSize(pageSize);
         TableDTO tableDTO = queryTimetableService.retrieveQueryTimetable(request);
         Vector<Vector<Object>> data = tableDTO.getData();
-        QueryTimetableTableModel.updateQueryTabletimeModel(data);
+        QueryTimetableTableModel.updateQueryTimetableModel(data);
         queryTimetableViewTable.renderRule();
         showPreNext(tableDTO.getTotalCount());
 
     }
-
-
-
 
 }

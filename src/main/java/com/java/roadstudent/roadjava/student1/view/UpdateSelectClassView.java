@@ -4,7 +4,7 @@ import com.java.roadstudent.roadjava.Handler.UpdateSelectClassViewHandler;
 import com.java.roadstudent.roadjava.entity.SelectClassDO;
 import com.java.roadstudent.roadjava.service.SelectClassService;
 import com.java.roadstudent.roadjava.service.impl.SelectClassServiceImpl;
-import com.java.roadstudent.roadjava.student1.SelectClassMainView;
+import com.java.roadstudent.roadjava.student1.SelectClassView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +30,7 @@ public class UpdateSelectClassView extends JDialog {
 
     UpdateSelectClassViewHandler updateSelectClassViewHandler;
 
-    public UpdateSelectClassView(SelectClassMainView selectClassMainView, int selectClassId){
+    public UpdateSelectClassView(SelectClassView selectClassMainView, int selectClassId){
         super(selectClassMainView,"修改选课状态",true);
 
         updateSelectClassViewHandler =new UpdateSelectClassViewHandler(this,selectClassMainView);
@@ -43,42 +43,42 @@ public class UpdateSelectClassView extends JDialog {
         idTxt.setPreferredSize(new Dimension(200,30));
         idTxt.setText(selectedSelectClass.getId()+"");
         //设置不可编辑
-        idTxt.setEnabled(false);
+        idTxt.setEditable(false);
         jPanel.add(idTxt);
 
         course_idLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(course_idLabel);
         course_idTxt.setPreferredSize(new Dimension(200,30));
         course_idTxt.setText(selectedSelectClass.getCourse_id()+"");
-        course_idTxt.setEnabled(false);
+        course_idTxt.setEditable(false);
         jPanel.add(course_idTxt);
 
         teacher_nameLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(teacher_nameLabel);
         teacher_nameTxt.setPreferredSize(new Dimension(200,30));
         teacher_nameTxt.setText(selectedSelectClass.getTeacher_name()+"");
-        teacher_nameTxt.setEnabled(false);
+        teacher_nameTxt.setEditable(false);
         jPanel.add(teacher_nameTxt);
 
         max_numberLabel.setPreferredSize(new Dimension(100,30));
         jPanel.add(max_numberLabel);
         max_numberTxt.setPreferredSize(new Dimension(200,30));
         max_numberTxt.setText(selectedSelectClass.getMax_number()+"");
-        max_numberTxt.setEnabled(false);
+        max_numberTxt.setEditable(false);
         jPanel.add(max_numberTxt);
 
         picked_numberLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(picked_numberLabel);
         picked_numberTxt.setPreferredSize(new Dimension(200,30));
         picked_numberTxt.setText(selectedSelectClass.getPicked_number()+"");
-        picked_numberTxt.setEnabled(false);
+        picked_numberTxt.setEditable(false);
         jPanel.add(picked_numberTxt);
 
         dept_nameLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(dept_nameLabel);
         dept_nameTxt.setPreferredSize(new Dimension(200,30));
         dept_nameTxt.setText(selectedSelectClass.getDept_name()+"");
-        dept_nameTxt.setEnabled(false);
+        dept_nameTxt.setEditable(false);
         jPanel.add(dept_nameTxt);
 
         pick_or_notLabel.setPreferredSize(new Dimension(80,30));
@@ -89,7 +89,6 @@ public class UpdateSelectClassView extends JDialog {
 
         updateBtn.addActionListener(updateSelectClassViewHandler);
         jPanel.add(updateBtn);
-
 
         Container contentPane = getContentPane();
         contentPane.add(jPanel);

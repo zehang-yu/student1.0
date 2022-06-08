@@ -20,7 +20,7 @@ public class SelectClassServiceImpl implements SelectClassService {
         StringBuilder sql = new StringBuilder();
         sql.append("select * from section ");
         if(request.getSearchKey()!=null && !"".equals(request.getSearchKey().trim())){
-            sql.append(" where course_id like '%"+request.getSearchKey().trim()+"%' ");
+            sql.append("where course_id like '%"+request.getSearchKey().trim()+"%' ");
         }
         sql.append("order by id asc limit ").append(request.getStart()).append(",").append(request.getPageSize());
         Connection conn=null;

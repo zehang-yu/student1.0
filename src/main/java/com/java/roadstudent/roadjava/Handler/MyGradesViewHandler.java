@@ -14,15 +14,13 @@ public class MyGradesViewHandler implements ActionListener {
     public MyGradesViewHandler(MyGradesView myGradesView, StudentMainView studentmainView){
 
         this.myGradesView = myGradesView;
-        this.studentmainView=studentmainView;
+        this.studentmainView = studentmainView;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();
         String text = jButton.getText();
 
-
     }
-
 
 }

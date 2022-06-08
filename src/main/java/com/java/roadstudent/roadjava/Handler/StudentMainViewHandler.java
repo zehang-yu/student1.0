@@ -1,8 +1,8 @@
 package com.java.roadstudent.roadjava.Handler;
 
 
-import com.java.roadstudent.roadjava.student1.QueryTimetableMainView;
-import com.java.roadstudent.roadjava.student1.SelectClassMainView;
+import com.java.roadstudent.roadjava.student1.QueryTimetableView;
+import com.java.roadstudent.roadjava.student1.SelectClassView;
 import com.java.roadstudent.roadjava.student1.StudentMainView;
 import com.java.roadstudent.roadjava.student1.view.MyGradesView;
 import com.java.roadstudent.roadjava.student1.view.MyInfoView;
@@ -25,21 +25,22 @@ public class StudentMainViewHandler implements ActionListener {
         String text = jButton.getText();
         if("我的信息".equals(text))
         {
-            int no = studentMainView.id1;
+            int no = studentMainView.id;
             new MyInfoView(studentMainView,no);
         }
         else if ("我的成绩".equals(text))
         {
-            int no = studentMainView.id1;
+            int no = studentMainView.id;
             new MyGradesView(studentMainView,no);
         }
-        else if("课表查询".equals(text)){
+        else if("已选查询".equals(text))
+        {
 
-            new QueryTimetableMainView();
+            new QueryTimetableView();
         }
         else if ("选课系统".equals(text))
         {
-            new SelectClassMainView();
+            new SelectClassView();
         }
     }
 

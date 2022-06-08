@@ -11,11 +11,11 @@ import java.awt.*;
 
 public class MyGradesView extends JDialog {
     JPanel jPanel=new JPanel(new FlowLayout(FlowLayout.CENTER,10,20));
-    JLabel cnLabel = new JLabel("语文成绩：",JLabel.RIGHT);
+    JLabel cnLabel = new JLabel("c++成绩：",JLabel.RIGHT);
     JTextField cnTxt = new JTextField();
-    JLabel enLabel = new JLabel("英语成绩：",JLabel.RIGHT);
+    JLabel enLabel = new JLabel("大英成绩：",JLabel.RIGHT);
     JTextField enTxt = new JTextField();
-    JLabel mathLabel = new JLabel("数学成绩：",JLabel.RIGHT);
+    JLabel mathLabel = new JLabel("工数成绩：",JLabel.RIGHT);
     JTextField mathTxt = new JTextField();
 
 
@@ -23,29 +23,35 @@ public class MyGradesView extends JDialog {
 
     public MyGradesView(StudentMainView studentmainView, int selectStudentId){
         super(studentmainView,"学生成绩界面",true);
-// 192.168.137.1:
+
         myGradesViewHandler =new MyGradesViewHandler(this,studentmainView);
         //查询selectStudentId对应的记录并回显
         StudentService studentService = new StudentServiceImpl();
-        StudentDO selectedStu = studentService.getByNo(selectStudentId);
+        StudentDO selectedStudent = studentService.getByNo(selectStudentId);
 
         cnLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(cnLabel);
         cnTxt.setPreferredSize(new Dimension(200,30));
-        cnTxt.setText(String.valueOf(selectedStu.getCnScore()));
+        cnTxt.setText(String.valueOf(selectedStudent.getCnScore()));
         jPanel.add(cnTxt);
+        cnTxt.setHorizontalAlignment(JTextField.CENTER);
+        cnTxt.setEditable(false);
 
         enLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(enLabel);
         enTxt.setPreferredSize(new Dimension(200,30));
-        enTxt.setText(String.valueOf(selectedStu.getEnScore()));
+        enTxt.setText(String.valueOf(selectedStudent.getEnScore()));
         jPanel.add(enTxt);
+        enTxt.setHorizontalAlignment(JTextField.CENTER);
+        enTxt.setEditable(false);
 
         mathLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(mathLabel);
         mathTxt.setPreferredSize(new Dimension(200,30));
-        mathTxt.setText(String.valueOf(selectedStu.getMathScore()));
+        mathTxt.setText(String.valueOf(selectedStudent.getMathScore()));
         jPanel.add(mathTxt);
+        mathTxt.setHorizontalAlignment(JTextField.CENTER);
+        mathTxt.setEditable(false);
 
 
 
@@ -63,16 +69,14 @@ public class MyGradesView extends JDialog {
     }
 
     //获取修改后的学生对象
-    public StudentDO buildUpdatedStudentDO() {
-
-        StudentDO studentDO = new StudentDO();
-        studentDO.setCnScore(Double.valueOf(cnTxt.getText()));
-        studentDO.setEnScore(Double.valueOf(enTxt.getText()));
-        studentDO.setMathScore(Double.valueOf(mathTxt.getText()));
-
-
-        return studentDO;
-
-    }
+//    public StudentDO buildUpdatedStudentDO() {
+//
+//        StudentDO studentDO = new StudentDO();
+//        studentDO.setCnScore(Double.valueOf(cnTxt.getText()));
+//        studentDO.setEnScore(Double.valueOf(enTxt.getText()));
+//        studentDO.setMathScore(Double.valueOf(mathTxt.getText()));
+//
+//        return studentDO;
+//    }
 
 }

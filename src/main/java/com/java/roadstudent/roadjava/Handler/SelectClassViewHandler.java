@@ -1,7 +1,7 @@
 package com.java.roadstudent.roadjava.Handler;
 
 
-import com.java.roadstudent.roadjava.student1.SelectClassMainView;
+import com.java.roadstudent.roadjava.student1.SelectClassView;
 import com.java.roadstudent.roadjava.student1.view.UpdateSelectClassView;
 
 
@@ -11,8 +11,8 @@ import java.awt.event.ActionListener;
 
 public class SelectClassViewHandler implements ActionListener {
 
-    private SelectClassMainView selectClassMainView;
-    public SelectClassViewHandler(SelectClassMainView selectClassMainView){
+    private SelectClassView selectClassMainView;
+    public SelectClassViewHandler(SelectClassView selectClassMainView){
         this.selectClassMainView = selectClassMainView;
 
     }
@@ -25,7 +25,7 @@ public class SelectClassViewHandler implements ActionListener {
         {
             selectClassMainView.setPageNow(1);
             selectClassMainView.reLoadClassTable();
-        }else if ("修改".equals(text))
+        }else if ("选课".equals(text))
         {
             int[] selectClassIds = selectClassMainView.getSelectClassIds();
             if(selectClassIds.length!=1){

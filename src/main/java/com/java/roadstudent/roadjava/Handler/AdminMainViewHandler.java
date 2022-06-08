@@ -2,7 +2,7 @@ package com.java.roadstudent.roadjava.Handler;
 
 import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.MainView;
+import com.java.roadstudent.roadjava.student1.AdminMainView;
 import com.java.roadstudent.roadjava.student1.view.AddStudentView;
 import com.java.roadstudent.roadjava.student1.view.UpdateStudentView;
 
@@ -10,10 +10,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainViewHandler implements ActionListener {
+public class AdminMainViewHandler implements ActionListener {
 
-    private MainView mainView;
-    public MainViewHandler(MainView mainView){
+    private AdminMainView mainView;
+    public AdminMainViewHandler(AdminMainView mainView){
         this.mainView = mainView;
 
     }
@@ -21,7 +21,7 @@ public class MainViewHandler implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton jButton = (JButton) e.getSource();
         String text = jButton.getText();
-        if("增加".equals(text))
+        if("添加".equals(text))
         {
             new AddStudentView(mainView);
         }
@@ -29,7 +29,7 @@ public class MainViewHandler implements ActionListener {
         {
             int[] selectStudentIds = mainView.getSelectStudentIds();
             if(selectStudentIds.length!=1){
-                JOptionPane.showMessageDialog(mainView,"一次只能修改一行");
+                JOptionPane.showMessageDialog(mainView,"请选择一行数据修改");
                 return;
             }
             new UpdateStudentView(mainView,selectStudentIds[0]);

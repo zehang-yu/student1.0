@@ -7,7 +7,7 @@ import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.AdminServiceImpl;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
 import com.java.roadstudent.roadjava.student1.LoginView;
-import com.java.roadstudent.roadjava.student1.MainView;
+import com.java.roadstudent.roadjava.student1.AdminMainView;
 import com.java.roadstudent.roadjava.student1.StudentMainView;
 
 import javax.swing.*;
@@ -34,20 +34,19 @@ public class LoginHandler extends KeyAdapter implements ActionListener {
         }
         else if ("教务员登录".equals(text))
         {
-            login();
+            adminLogin();
         }
-        else if("学生登录".equals(text)){
-
-            stulogin();
-            //new StudentRegisterView(loginView);
+        else if("学生登录".equals(text))
+        {
+            stuLogin();
         }
     }
 
-    private void login() {
+    private void adminLogin() {
         String user = loginView.getUserText().getText();
         char[] chars = loginView.getPwdField().getPassword();
         if(user==null||"".equals(user.trim())||chars==null){
-            JOptionPane.showMessageDialog(loginView,"用户名密码必填");
+            JOptionPane.showMessageDialog(loginView,"请输入用户名和密码");
             return;
         }
         String pwd = new String(chars);
@@ -61,19 +60,19 @@ public class LoginHandler extends KeyAdapter implements ActionListener {
         if(flag)
         {
             //跳转到主界面并销毁登录界面
-            new MainView();
+            new AdminMainView();
             loginView.dispose();
         }
         else
         {
-            JOptionPane.showMessageDialog(loginView,"用户名密码错误");
+            JOptionPane.showMessageDialog(loginView,"用户名或密码错误");
         }
     }
-    private void stulogin() {
+    private void stuLogin() {
         String user = loginView.getUserText().getText();
         char[] chars = loginView.getPwdField().getPassword();
         if(user==null||"".equals(user.trim())||chars==null){
-            JOptionPane.showMessageDialog(loginView,"用户名密码必填");
+            JOptionPane.showMessageDialog(loginView,"请输入用户名和密码");
             return;
         }
         String pwd = new String(chars);
@@ -92,7 +91,7 @@ public class LoginHandler extends KeyAdapter implements ActionListener {
         }
         else
         {
-            JOptionPane.showMessageDialog(loginView,"用户名密码错误");
+            JOptionPane.showMessageDialog(loginView,"用户名或密码错误");
         }
     }
 
@@ -100,7 +99,7 @@ public class LoginHandler extends KeyAdapter implements ActionListener {
     public void keyPressed(KeyEvent e) {
         if( KeyEvent.VK_ENTER==  e.getKeyCode())
         {
-            login();
+            adminLogin();
         }
     }
 }

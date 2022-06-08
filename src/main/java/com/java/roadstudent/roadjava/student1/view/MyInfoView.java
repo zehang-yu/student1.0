@@ -11,14 +11,14 @@ import java.awt.*;
 
 public class MyInfoView extends JDialog {
     JPanel jPanel=new JPanel(new FlowLayout(FlowLayout.CENTER,10,20));
-    JLabel idLabel = new JLabel("学生编号：");
-    JTextField idTxt =new JTextField();
+//    JLabel idLabel = new JLabel("学生编号：");
+//    JTextField idTxt =new JTextField();
     JLabel nameLabel = new JLabel("姓名：",JLabel.RIGHT);
     JTextField nameTxt = new JTextField();
     JLabel noLabel = new JLabel("学号：",JLabel.RIGHT);
     JTextField noTxt = new JTextField();
-    JLabel homeLabel = new JLabel("家乡：",JLabel.RIGHT);
-    JTextField homeTxt = new JTextField();
+    JLabel deptLabel = new JLabel("学院：",JLabel.RIGHT);
+    JTextField deptTxt = new JTextField();
 
 
     MyInfoViewHandler MyInfoViewHandler;
@@ -31,35 +31,29 @@ public class MyInfoView extends JDialog {
         StudentService studentService = new StudentServiceImpl();
         StudentDO selectedStu = studentService.getByNo(selectStudentId);
 
-        idLabel.setPreferredSize(new Dimension(80,30));
-        jPanel.add(idLabel);
-        idTxt.setPreferredSize(new Dimension(200,30));
-        idTxt.setText(selectedStu.getId()+"");
-        //设置ID不可编辑
-
-        jPanel.add(idTxt);
-
-
         nameLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(nameLabel);
         nameTxt.setPreferredSize(new Dimension(200,30));
         nameTxt.setText(selectedStu.getName());
-
         jPanel.add(nameTxt);
+        nameTxt.setHorizontalAlignment(JTextField.CENTER);
+        nameTxt.setEditable(false);
 
         noLabel.setPreferredSize(new Dimension(80,30));
         jPanel.add(noLabel);
         noTxt.setPreferredSize(new Dimension(200,30));
         noTxt.setText(selectedStu.getNo());
-
         jPanel.add(noTxt);
+        noTxt.setHorizontalAlignment(JTextField.CENTER);
+        noTxt.setEditable(false);
 
-        homeLabel.setPreferredSize(new Dimension(80,30));
-        jPanel.add(homeLabel);
-        homeTxt.setPreferredSize(new Dimension(200,30));
-        homeTxt.setText(selectedStu.getHomeTown());
-
-        jPanel.add(homeTxt);
+        deptLabel.setPreferredSize(new Dimension(80,30));
+        jPanel.add(deptLabel);
+        deptTxt.setPreferredSize(new Dimension(200,30));
+        deptTxt.setText(selectedStu.getDepartment());
+        jPanel.add(deptTxt);
+        deptTxt.setHorizontalAlignment(JTextField.CENTER);
+        deptTxt.setEditable(false);
 
 
 
@@ -80,10 +74,10 @@ public class MyInfoView extends JDialog {
     public StudentDO buildUpdatedStudentDO() {
 
         StudentDO studentDO = new StudentDO();
-        studentDO.setId(Integer.valueOf(idTxt.getText()));
+//        studentDO.setId(Integer.valueOf(idTxt.getText()));
         studentDO.setName(nameTxt.getText());
         studentDO.setNo(noTxt.getText());
-        studentDO.setHomeTown(homeTxt.getText());
+        studentDO.setDepartment(deptTxt.getText());
 
 
         return studentDO;

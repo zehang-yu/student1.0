@@ -1,11 +1,11 @@
 package com.java.roadstudent.roadjava.student1;
-import com.java.roadstudent.roadjava.Handler.MainViewHandler;
+import com.java.roadstudent.roadjava.Handler.AdminMainViewHandler;
 import com.java.roadstudent.roadjava.req.StudentRequest;
 import com.java.roadstudent.roadjava.res.TableDTO;
 import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.view.MainViewTable;
-import com.java.roadstudent.roadjava.student1.view.MainViewTableModel;
+import com.java.roadstudent.roadjava.student1.view.AdminMainViewTable;
+import com.java.roadstudent.roadjava.student1.view.AdminMainViewTableModel;
 import com.java.roadstudent.roadjava.util.DimensionUtil;
 
 import javax.swing.*;
@@ -13,48 +13,45 @@ import java.awt.*;
 import java.net.URL;
 import java.util.Vector;
 
-public class MainView extends  JFrame{
+public class AdminMainView extends  JFrame{
 
-    JPanel northPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    JButton addButton = new JButton("增加");
+    JPanel northPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+    JButton addButton = new JButton("添加");
     JButton updateButton = new JButton("修改");
     JButton delButton =  new JButton("删除");
-    JTextField searchTxt=new JTextField(15);
+    JTextField searchTxt=new JTextField(20);
     JButton searchBtn = new JButton("查询");
 
-    JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+    JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
     JButton preBtn = new JButton("上一页");
     JButton nextBtn = new JButton("下一页");
 
-    MainViewTable mainViewTable=new MainViewTable();
+    AdminMainViewTable mainViewTable = new AdminMainViewTable();
     private int pageNow = 1;//当前是第几页，默认是第一页
-    private int pageSize = 10;//一页显示多少条数据库记录
+    private int pageSize;//一页显示多少条数据库记录
 
-    MainViewHandler mainViewHandler;
+    AdminMainViewHandler mainViewHandler;
 
 
 
-    public MainView() {
-        super("管理员端-学生教务管理系统");
-
+    public AdminMainView() {
+        super("学生教务管理系统-教务员端");
 
         Container contentPane = getContentPane();
         Rectangle bounds = DimensionUtil.getBounds();
-        pageSize = Math.floorDiv(bounds.height,35);
+        pageSize = Math.floorDiv(bounds.height,50);
 
-
-
-        mainViewHandler = new MainViewHandler(this);
+        mainViewHandler = new AdminMainViewHandler(this);
         //放置北边的组件
         northLayout(contentPane);
-        //设置中间的jtable
+        //设置中间的JTable
         CenterLayout(contentPane);
         //放置南边的组件
         southLayout(contentPane);
 
 
         //自定义图标
-        URL imageUrl = MainView.class.getClassLoader().getResource("maotou.jpg");
+        URL imageUrl = AdminMainView.class.getClassLoader().getResource("logo.png");
         setIconImage(new ImageIcon(imageUrl).getImage());
         //根据屏幕大小设置主界面
 
@@ -73,8 +70,8 @@ public class MainView extends  JFrame{
         TableDTO dto = getTableDTO();
 
         //data+totalCount
-        MainViewTableModel mainViewTableModel = MainViewTableModel.assembleModel(dto.getData());
-        //吧jtable和model关联
+        AdminMainViewTableModel mainViewTableModel = AdminMainViewTableModel.assembleModel(dto.getData());
+        //吧JTable和model关联
         mainViewTable.setModel(mainViewTableModel);
         mainViewTable.renderRule();
 
@@ -91,7 +88,7 @@ public class MainView extends  JFrame{
         request.setPageSize(pageSize);
         request.setSearchKey(searchTxt.getText().trim());
         TableDTO tableDTO = studentService.retrieveStudent(request);
-        Vector<Vector<Object>> data = tableDTO.getData();
+//        Vector<Vector<Object>> data = tableDTO.getData();
         return tableDTO;
     }
 
@@ -105,18 +102,22 @@ public class MainView extends  JFrame{
     }
     //设置上一页下一页是否可见
     private void showPreNext(int totalCount){
-        if(pageNow==1){
+        if(pageNow == 1)
+        {
             preBtn.setVisible(false);
-        }else {
+        }
+        else 
+        {
             preBtn.setVisible(true);
         }
-        int pageCount = 0;//总共有几页
+        int lastPage;//总共有几页
         if(totalCount%pageSize==0){
-            pageCount=totalCount/pageSize;
-        }else{
-            pageCount=totalCount/pageSize+1;
+            lastPage = totalCount/pageSize;
         }
-        if(pageNow==pageCount){
+        else{
+            lastPage = totalCount/pageSize+1;
+        }
+        if(pageNow == lastPage){
             nextBtn.setVisible(false);
         }else {
             nextBtn.setVisible(true);
@@ -139,11 +140,11 @@ public class MainView extends  JFrame{
         contentPane.add(northPanel,BorderLayout.NORTH);
     }
 
-
     public static void main(String[] args) {
-        new MainView();
+        new AdminMainView();
 
     }
+
     public void setPageNow(int pageNow){
         this.pageNow= pageNow;
     }
@@ -160,11 +161,12 @@ public class MainView extends  JFrame{
         request.setSearchKey(searchTxt.getText().trim());
         TableDTO tableDTO = studentService.retrieveStudent(request);
         Vector<Vector<Object>> data = tableDTO.getData();
-        MainViewTableModel.updateModel(data);
+        AdminMainViewTableModel.updateModel(data);
         mainViewTable.renderRule();
         showPreNext(tableDTO.getTotalCount());
 
     }
+
     public int[] getSelectStudentIds(){
         int[] selectedRows = mainViewTable.getSelectedRows();
         int[] ids = new int[selectedRows.length];

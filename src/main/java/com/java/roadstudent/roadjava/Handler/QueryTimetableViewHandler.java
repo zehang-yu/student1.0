@@ -1,7 +1,7 @@
 package com.java.roadstudent.roadjava.Handler;
 
 
-import com.java.roadstudent.roadjava.student1.QueryTimetableMainView;
+import com.java.roadstudent.roadjava.student1.QueryTimetableView;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -9,8 +9,8 @@ import java.awt.event.ActionListener;
 
 public class QueryTimetableViewHandler implements ActionListener {
 
-    private QueryTimetableMainView queryTimetableMainView;
-    public QueryTimetableViewHandler(QueryTimetableMainView queryTimetableMainView){
+    private QueryTimetableView queryTimetableMainView;
+    public QueryTimetableViewHandler(QueryTimetableView queryTimetableMainView){
         this.queryTimetableMainView = queryTimetableMainView;
 
     }

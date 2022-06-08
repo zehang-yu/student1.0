@@ -2,7 +2,7 @@ package com.java.roadstudent.roadjava.student1.view;
 
 import com.java.roadstudent.roadjava.Handler.AddStudentViewHandler;
 import com.java.roadstudent.roadjava.entity.StudentDO;
-import com.java.roadstudent.roadjava.student1.MainView;
+import com.java.roadstudent.roadjava.student1.AdminMainView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,11 +15,11 @@ public class AddStudentView extends JDialog {
     JTextField noTxt = new JTextField();
     JLabel homeLabel = new JLabel("学院：",JLabel.RIGHT);
     JTextField homeTxt = new JTextField();
-    JLabel cnLabel = new JLabel("语文成绩：",JLabel.RIGHT);
+    JLabel cnLabel = new JLabel("c++成绩：",JLabel.RIGHT);
     JTextField cnTxt = new JTextField();
-    JLabel enLabel = new JLabel("英语成绩：",JLabel.RIGHT);
+    JLabel enLabel = new JLabel("大英成绩：",JLabel.RIGHT);
     JTextField enTxt = new JTextField();
-    JLabel mathLabel = new JLabel("数学成绩：",JLabel.RIGHT);
+    JLabel mathLabel = new JLabel("工数成绩：",JLabel.RIGHT);
     JTextField mathTxt = new JTextField();
     JLabel pwdLabel = new JLabel("密码：",JLabel.RIGHT);
     JTextField pwdTxt = new JTextField();
@@ -27,7 +27,7 @@ public class AddStudentView extends JDialog {
 
     AddStudentViewHandler addStudentViewHandler;
 
-    public AddStudentView(MainView mainView){
+    public AddStudentView(AdminMainView mainView){
         super(mainView,"添加学生",true);
         addStudentViewHandler=new AddStudentViewHandler(this,mainView);
 
@@ -88,11 +88,12 @@ public class AddStudentView extends JDialog {
         StudentDO studentDO = new StudentDO();
         studentDO.setName(nameTxt.getText());
         studentDO.setNo(noTxt.getText());
-        studentDO.setHomeTown(homeTxt.getText());
+        studentDO.setDepartment(homeTxt.getText());
         studentDO.setCnScore(Double.valueOf(cnTxt.getText()));
         studentDO.setEnScore(Double.valueOf(enTxt.getText()));
         studentDO.setMathScore(Double.valueOf(mathTxt.getText()));
-        System.err.println(pwdTxt.getText());
+        studentDO.setPwd(pwdTxt.getText());
+//        System.err.println(pwdTxt.getText());
 
         return studentDO;
 

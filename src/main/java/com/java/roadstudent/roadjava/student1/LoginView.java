@@ -13,7 +13,7 @@ import static java.awt.Font.PLAIN;
 
 public class LoginView extends  JFrame{
 
-    JLabel nameLabel = new JLabel("学生管理系统",JLabel.CENTER);
+    JLabel nameLabel = new JLabel("学生教务管理系统",JLabel.CENTER);
     SpringLayout springLayout = new SpringLayout();
     JPanel centerPane = new JPanel(springLayout);
     JLabel userNameLabel = new JLabel("用户名：");
@@ -21,42 +21,38 @@ public class LoginView extends  JFrame{
     JLabel pwdLabel = new JLabel("密码：");
     JPasswordField pwdField = new JPasswordField();
     JButton loginBtn = new JButton("教务员登录");
-    //JButton resetBtn = new JButton("重置");
-    JButton stuLoginbtn = new JButton("学生登录");
+    JButton stuLoginBtn = new JButton("学生登录");
     TrayIcon trayIcon;
     SystemTray systemTray;
-    LoginHandler loginHandler;
+    LoginHandler adminLoginHandler;
 
 
     public LoginView() {
         super("学生教务管理系统");
 
-        loginHandler= new LoginHandler(this);
+        adminLoginHandler = new LoginHandler(this);
         Container contentPane = getContentPane();
-        nameLabel.setFont(new Font("华文斜体",Font.PLAIN,40));
+        nameLabel.setFont(new Font("微软雅黑",Font.PLAIN,30));
         nameLabel.setPreferredSize(new Dimension(0,80));
-        Font centerFont = new Font("楷体", PLAIN,20);
+        Font centerFont = new Font("微软雅黑", PLAIN,15);
         userNameLabel.setFont(centerFont);
         userText.setPreferredSize(new Dimension(200,30));
         pwdLabel.setFont(centerFont);
         pwdField.setPreferredSize(new Dimension(200,30));
         loginBtn.setFont(centerFont);
-        //resetBtn.setFont(centerFont);
-        stuLoginbtn.setFont(centerFont);
+        stuLoginBtn.setFont(centerFont);
         //把组件加入面板
         centerPane.add(nameLabel);
         centerPane.add(userNameLabel);
         centerPane.add(userText);
         centerPane.add(pwdLabel);
         centerPane.add(pwdField);
-        loginBtn.addActionListener(loginHandler);
+        loginBtn.addActionListener(adminLoginHandler);
         //增加按键事件
-        loginBtn.addKeyListener(loginHandler);
+        loginBtn.addKeyListener(adminLoginHandler);
         centerPane.add(loginBtn);
-        //resetBtn.addActionListener(loginHandler);
-       // centerPane.add(resetBtn);
-        stuLoginbtn.addActionListener(loginHandler);
-        centerPane.add(stuLoginbtn);
+        stuLoginBtn.addActionListener(adminLoginHandler);
+        centerPane.add(stuLoginBtn);
         contentPane.add(nameLabel,BorderLayout.NORTH);
         contentPane.add(centerPane,BorderLayout.CENTER);
         //弹簧布局
@@ -65,7 +61,7 @@ public class LoginView extends  JFrame{
         if(SystemTray.isSupported())
         {
             systemTray = SystemTray.getSystemTray();
-            URL imageUrl = LoginView.class.getClassLoader().getResource("moyu.png");
+            URL imageUrl = LoginView.class.getClassLoader().getResource("logo.png");
             trayIcon = new TrayIcon(new ImageIcon(imageUrl).getImage());
             //设置托盘图片大小自动缩放
             trayIcon.setImageAutoSize(true);
@@ -97,15 +93,14 @@ public class LoginView extends  JFrame{
         }
 
         //设置longinBtn为默认按钮
-        getRootPane().setDefaultButton(loginBtn);
-
-
+        //getRootPane().setDefaultButton(loginBtn);
 
 
         //自定义图标
-        URL imageUrl = LoginView.class.getClassLoader().getResource("maotou.jpg");
+        URL imageUrl = LoginView.class.getClassLoader().getResource("logo.png");
         setIconImage(new ImageIcon(imageUrl).getImage());
         setSize(500,300);//单位是像素
+
         //居中显示
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -120,26 +115,23 @@ public class LoginView extends  JFrame{
         Spring childwith = Spring.sum(Spring.sum(Spring.width(userNameLabel), Spring.width(userText)), Spring.constant(20));
         int offSetX  = childwith.getValue() / 2;
         springLayout.putConstraint(SpringLayout.WEST,userNameLabel,-offSetX,SpringLayout.HORIZONTAL_CENTER,centerPane);
-        springLayout.putConstraint(SpringLayout.NORTH,userNameLabel,20,SpringLayout.NORTH,centerPane);
+        springLayout.putConstraint(SpringLayout.NORTH,userNameLabel,10,SpringLayout.NORTH,centerPane);
 
         //userText
-        springLayout.putConstraint(SpringLayout.WEST,userText,20,SpringLayout.EAST,userNameLabel);
+        springLayout.putConstraint(SpringLayout.WEST,userText,10,SpringLayout.EAST,userNameLabel);
         springLayout.putConstraint(SpringLayout.NORTH,userText,0,SpringLayout.NORTH,userNameLabel);
         //pwdLabel
         springLayout.putConstraint(SpringLayout.EAST,pwdLabel,0,SpringLayout.EAST,userNameLabel);
         springLayout.putConstraint(SpringLayout.NORTH,pwdLabel,20,SpringLayout.SOUTH,userNameLabel);
         //pwdField
-        springLayout.putConstraint(SpringLayout.WEST,pwdField,20,SpringLayout.EAST,pwdLabel);
+        springLayout.putConstraint(SpringLayout.WEST,pwdField,10,SpringLayout.EAST,pwdLabel);
         springLayout.putConstraint(SpringLayout.NORTH,pwdField,0,SpringLayout.NORTH,pwdLabel);
         //loginBtn
         springLayout.putConstraint(SpringLayout.WEST,loginBtn,0,SpringLayout.WEST,pwdLabel);
-        springLayout.putConstraint(SpringLayout.NORTH,loginBtn,20,SpringLayout.SOUTH,pwdLabel);
-        //resetBtn
-        //springLayout.putConstraint(SpringLayout.WEST,resetBtn,50,SpringLayout.EAST,loginBtn);
-        //springLayout.putConstraint(SpringLayout.NORTH,resetBtn,0,SpringLayout.NORTH,loginBtn);
-        //stuLoginbtn
-        springLayout.putConstraint(SpringLayout.WEST,stuLoginbtn,50,SpringLayout.EAST,loginBtn);
-        springLayout.putConstraint(SpringLayout.NORTH,stuLoginbtn,0,SpringLayout.NORTH,loginBtn);
+        springLayout.putConstraint(SpringLayout.NORTH,loginBtn,40,SpringLayout.SOUTH,pwdLabel);
+        //stuLoginBtn
+        springLayout.putConstraint(SpringLayout.WEST,stuLoginBtn,50,SpringLayout.EAST,loginBtn);
+        springLayout.putConstraint(SpringLayout.NORTH,stuLoginBtn,0,SpringLayout.NORTH,loginBtn);
     }
 
     public static void main(String[] args) {

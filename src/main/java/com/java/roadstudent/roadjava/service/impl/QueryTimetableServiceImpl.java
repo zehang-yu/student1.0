@@ -18,7 +18,7 @@ public class QueryTimetableServiceImpl implements QueryTimetableService {
         StringBuilder sql = new StringBuilder();
         sql.append("select takes.course_id,teacher_name,building,room_number,time_slot_id,grade,year from takes,section,student where takes.no = student.no and takes.course_id = section.course_id ");
         if(request.getSearchKey()!=null && !"".equals(request.getSearchKey().trim())){
-            sql.append(" where course_id like '%"+request.getSearchKey().trim()+"%' ");
+            sql.append(" where course_id like '%"+request.getSearchKey().trim()+"% or teacher_name like '%"+request.getSearchKey().trim()+"%' ");
         }
         sql.append("order by null asc limit ").append(request.getStart()).append(",").append(request.getPageSize());
         Connection conn=null;
@@ -35,7 +35,8 @@ public class QueryTimetableServiceImpl implements QueryTimetableService {
 
             sql.setLength(0);
             sql.append("select count(*) from takes ");
-            if(request.getSearchKey()!=null && !"".equals(request.getSearchKey().trim())){
+            if(request.getSearchKey()!=null && !"".equals(request.getSearchKey().trim()))
+            {
                 sql.append("where course_id like '%"+request.getSearchKey().trim()+"%'");
             }
             ps=conn.prepareStatement(sql.toString());

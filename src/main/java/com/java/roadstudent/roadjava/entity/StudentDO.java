@@ -4,7 +4,7 @@ public class StudentDO {
     private Integer id;
     private String Name;
     private String no;
-    private String homeTown;
+    private String department;
     private double cnScore;
     private double enScore;
     private double mathScore;
@@ -42,12 +42,12 @@ public class StudentDO {
         this.no = no;
     }
 
-    public String getHomeTown() {
-        return homeTown;
+    public String getDepartment() {
+        return department;
     }
 
-    public void setHomeTown(String homeTown) {
-        this.homeTown = homeTown;
+    public void setDepartment(String department) {
+        this.department = department;
     }
 
     public double getCnScore() {

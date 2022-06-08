@@ -6,32 +6,30 @@ import java.util.Vector;
 
 public class QueryTimetableTableModel extends DefaultTableModel {
 
-    static Vector<String> colums = new Vector<>();
+    static Vector<String> columns = new Vector<>();
     static {
-        colums.addElement("课程");
-        colums.addElement("授课教师");
-        colums.addElement("教学楼");
-        colums.addElement("教室");
-        colums.addElement("上课时间");
-        colums.addElement("年级");
-        colums.addElement("年份");
+        columns.addElement("课程");
+        columns.addElement("授课教师");
+        columns.addElement("教学楼");
+        columns.addElement("教室");
+        columns.addElement("上课时间");
+        columns.addElement("年级");
+        columns.addElement("年份");
     }
     private QueryTimetableTableModel(){
-        super(null,colums);
+        super(null, columns);
     }
     private static QueryTimetableTableModel queryTimetableTableModel= new QueryTimetableTableModel();
-    public static QueryTimetableTableModel assembleModel(Vector<Vector<Object>>data){
-        queryTimetableTableModel.setDataVector(data,colums);
+    public static QueryTimetableTableModel assembleModel(Vector<Vector<Object>>data) {
+        queryTimetableTableModel.setDataVector(data, columns);
         return queryTimetableTableModel;
     }
-    public static void updateQueryTabletimeModel(Vector<Vector<Object>>data){
-        queryTimetableTableModel.setDataVector(data,colums);
+    public static void updateQueryTimetableModel(Vector<Vector<Object>>data){
+        queryTimetableTableModel.setDataVector(data, columns);
 
     }
-
-
-    public static Vector<String> getColums() {
-        return colums;
+    public static Vector<String> getColumns() {
+        return columns;
     }
 
     @Override

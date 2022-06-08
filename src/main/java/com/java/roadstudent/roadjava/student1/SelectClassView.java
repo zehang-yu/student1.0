@@ -13,10 +13,10 @@ import java.awt.*;
 import java.net.URL;
 import java.util.Vector;
 
-public class SelectClassMainView extends  JFrame{
+public class SelectClassView extends  JFrame{
 
     JPanel northPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-    JButton updateButton = new JButton("修改");
+    JButton updateButton = new JButton("选课");
     JTextField searchTxt=new JTextField(15);
     JButton searchBtn = new JButton("查询");
 
@@ -32,8 +32,8 @@ public class SelectClassMainView extends  JFrame{
 
 
 
-    public SelectClassMainView() {
-        super("选课界面-学生成绩管理系统");
+    public SelectClassView() {
+        super("学生教务管理系统-选课界面");
 
 
         Container contentPane = getContentPane();
@@ -45,14 +45,14 @@ public class SelectClassMainView extends  JFrame{
         selectClassViewHandler = new SelectClassViewHandler(this);
         //放置北边的组件
         northLayout(contentPane);
-        //设置中间的jtable
+        //设置中间的JTable
         CenterLayout(contentPane);
         //放置南边的组件
         southLayout(contentPane);
 
 
         //自定义图标
-        URL imageUrl = SelectClassMainView.class.getClassLoader().getResource("maotou.jpg");
+        URL imageUrl = SelectClassView.class.getClassLoader().getResource("logo.png");
         setIconImage(new ImageIcon(imageUrl).getImage());
         //根据屏幕大小设置主界面
 
@@ -73,7 +73,7 @@ public class SelectClassMainView extends  JFrame{
 
         //data+totalCount
         SelectClassTableModel selectClassTableModel = SelectClassTableModel.assembleModel(dto.getData());
-        //吧jtable和model关联
+        //把JTable和model关联
         selectClassViewTable.setModel(selectClassTableModel);
         selectClassViewTable.renderRule();
 
@@ -136,7 +136,7 @@ public class SelectClassMainView extends  JFrame{
 
 
     public static void main(String[] args) {
-        new SelectClassMainView();
+        new SelectClassView();
 
     }
     public void setPageNow(int pageNow){

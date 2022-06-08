@@ -3,7 +3,7 @@ package com.java.roadstudent.roadjava.Handler;
 import com.java.roadstudent.roadjava.entity.StudentDO;
 import com.java.roadstudent.roadjava.service.StudentService;
 import com.java.roadstudent.roadjava.service.impl.StudentServiceImpl;
-import com.java.roadstudent.roadjava.student1.MainView;
+import com.java.roadstudent.roadjava.student1.AdminMainView;
 import com.java.roadstudent.roadjava.student1.view.UpdateStudentView;
 
 import javax.swing.*;
@@ -13,8 +13,8 @@ import java.awt.event.ActionListener;
 public class UpdateStudentViewHandler implements ActionListener {
 
     private UpdateStudentView updateStudentView;
-    private MainView mainView;
-    public UpdateStudentViewHandler(UpdateStudentView updateStudentView, MainView mainView){
+    private AdminMainView mainView;
+    public UpdateStudentViewHandler(UpdateStudentView updateStudentView, AdminMainView mainView){
         this.updateStudentView = updateStudentView;
         this.mainView=mainView;
     }
